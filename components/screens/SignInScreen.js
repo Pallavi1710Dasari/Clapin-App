@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+<<<<<<< HEAD
 import Colors from '../../constants/colors';
+=======
+>>>>>>> c03d9ac (initial commit)
 
 const SignInScreen = ({ navigation }) => {
   return (
@@ -23,17 +26,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+<<<<<<< HEAD
     backgroundColor: Colors.background, // Black background
+=======
+    backgroundColor: '#000', // Black background
+>>>>>>> c03d9ac (initial commit)
     padding: 20,
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
+<<<<<<< HEAD
     color: Colors.primary, // Yellow text
     marginBottom: 30,
   },
   button: {
     backgroundColor: Colors.primary, // Yellow button
+=======
+    color: '#FFD700', // Yellow text
+    marginBottom: 30,
+  },
+  button: {
+    backgroundColor: '#FFD700', // Yellow button
+>>>>>>> c03d9ac (initial commit)
     paddingVertical: 14,
     paddingHorizontal: 20,
     borderRadius: 8,
@@ -42,9 +57,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
+<<<<<<< HEAD
     color: Colors.textBlack, // Black text on yellow button
     fontSize: 16,
     //fontWeight: 'bold',
+=======
+    color: '#000', // Black text on yellow button
+    fontSize: 16,
+    fontWeight: 'bold',
+>>>>>>> c03d9ac (initial commit)
   },
 });
 
