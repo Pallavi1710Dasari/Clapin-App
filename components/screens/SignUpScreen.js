@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import Colors from '../../constants/colors';
 
 const SignUpScreen = ({ navigation }) => {
   return (
@@ -7,10 +8,10 @@ const SignUpScreen = ({ navigation }) => {
       <Text style={styles.title}>Sign Up</Text>
 
       {/* Input Fields */}
-      <TextInput style={styles.input} placeholder="Full Name" placeholderTextColor="#AAA" />
-      <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#AAA" keyboardType="email-address" />
-      <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#AAA" secureTextEntry />
-      <TextInput style={styles.input} placeholder="Confirm Password" placeholderTextColor="#AAA" secureTextEntry />
+      <TextInput style={styles.input} placeholder="Full Name" placeholderTextColor={Colors.placeholderTextColorSecondary} />
+      <TextInput style={styles.input} placeholder="Email" placeholderTextColor={Colors.placeholderTextColorSecondary} keyboardType="email-address" />
+      <TextInput style={styles.input} placeholder="Password" placeholderTextColor={Colors.placeholderTextColorSecondary} secureTextEntry />
+      <TextInput style={styles.input} placeholder="Confirm Password" placeholderTextColor={Colors.placeholderTextColorSecondary} secureTextEntry />
 
       {/* Sign Up Button */}
       <TouchableOpacity style={styles.button}>
@@ -30,29 +31,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#000', // Black background
+    backgroundColor: Colors.background, // Black background
     padding: 20,
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#FFD700', // Yellow title
+    color: Colors.primary, // Yellow title
     marginBottom: 20,
   },
   input: {
     width: '100%',
     height: 50,
-    backgroundColor: '#222', // Darker input fields
+    backgroundColor: Colors.input, // Darker input fields
     borderRadius: 8,
     paddingHorizontal: 15,
     marginVertical: 8,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: '#FFD700', // Yellow border
-    color: '#FFF', // White text inside input
+    borderColor: Colors.borderColor, // Yellow border
+    color: Colors.text, // White text inside input
   },
   button: {
-    backgroundColor: '#FFD700', // Yellow button
+    backgroundColor: Colors.primary, // Yellow button
     paddingVertical: 14,
     borderRadius: 8,
     width: '100%',
@@ -60,17 +61,17 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   buttonText: {
-    color: '#000', // Black text on yellow button
+    color: Colors.textBlack, // Black text on yellow button
     fontSize: 18,
-    fontWeight: 'bold',
+    //fontWeight: 'bold',
   },
   switchText: {
     marginTop: 20,
     fontSize: 16,
-    color: '#FFF', // White text
+    color: Colors.text, // White text
   },
   linkText: {
-    color: '#FFD700', // Yellow link
+    color: Colors.primary, // Yellow link
     fontWeight: 'bold',
   },
 });

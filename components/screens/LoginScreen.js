@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import Colors from '../../constants/colors';
 
 const LoginScreen = ({ navigation }) => {
   return (
@@ -7,8 +8,8 @@ const LoginScreen = ({ navigation }) => {
       <Text style={styles.title}>Login</Text>
 
       {/* Input Fields */}
-      <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#ddd" keyboardType="email-address" />
-      <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#ddd" secureTextEntry />
+      <TextInput style={styles.input} placeholder="Email" placeholderTextColor={Colors.placeholderTextColorPrimary} keyboardType="email-address" />
+      <TextInput style={styles.input} placeholder="Password" placeholderTextColor={Colors.placeholderTextColorPrimary} secureTextEntry />
 
       {/* Login Button */}
       <TouchableOpacity style={styles.button}>
@@ -28,29 +29,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#000', // Black background
+    backgroundColor: Colors.background, // Black background
     padding: 20,
   },
   title: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#FFD700', // Yellow color
+    color: Colors.primary, // Yellow color
     marginBottom: 25,
   },
   input: {
     width: '100%',
     height: 50,
-    backgroundColor: '#222', // Dark grey for input
+    backgroundColor: Colors.input, // Dark grey for input
     borderRadius: 8,
     paddingHorizontal: 15,
     marginVertical: 10,
     fontSize: 16,
-    color: '#fff', // White text
+    color: Colors.text, // White text
     borderWidth: 1,
-    borderColor: '#FFD700', // Yellow border
+    borderColor: Colors.borderColor, // Yellow border
   },
   button: {
-    backgroundColor: '#FFD700', // Yellow button
+    backgroundColor: Colors.primary, // Yellow button
     paddingVertical: 14,
     borderRadius: 8,
     width: '100%',
@@ -58,14 +59,14 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   buttonText: {
-    color: '#000', // Black text on yellow button
+    color: Colors.textBlack, // Black text on yellow button
     fontSize: 18,
-    fontWeight: 'bold',
+    //fontWeight: 'bold',
   },
   linkText: {
     marginTop: 20,
-    fontSize: 16,
-    color: '#FFD700', // Yellow text for navigation
+    fontSize: 17,
+    color: Colors.primary, // Yellow text for navigation
     fontWeight: 'bold',
   },
 });

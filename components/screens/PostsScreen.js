@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Colors from '../../constants/colors';
 
 const PostsScreen = () => {
   return (
@@ -17,7 +18,7 @@ const PostsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000', // Black background
+    backgroundColor: Colors.background, // Black background
     padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -25,12 +26,12 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#FFD700', // Yellow header
+    color: Colors.primary, // Yellow header
     marginBottom: 20,
   },
   postText: {
     fontSize: 16,
-    color: '#fff', // White text for readability
+    color: Colors.text, // White text for readability
     textAlign: 'center',
     marginBottom: 10,
     lineHeight: 24,

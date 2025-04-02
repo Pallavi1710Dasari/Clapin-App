@@ -4,7 +4,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import FeedsScreen from '../screens/FeedsScreen';
 import PostsScreen from '../screens/PostsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-
+import ConnectionsScreen from '../screens/ConnectionsScreen';
+import Colors from '../../constants/colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,23 +18,28 @@ const BottomTabNavigator = () => {
         tabBarIcon: ({ color, size }) => {
           let iconName;
           if (route.name === 'Feeds') {
-            iconName = 'home';
+            iconName = 'home-outline';
           } else if (route.name === 'Posts') {
             iconName = 'create';
-          } else if (route.name === 'Profile') {
+          } 
+          else if (route.name === 'Connections') {
+            iconName = 'person';
+          }
+          else if (route.name === 'Profile') {
             iconName = 'person';
           }
           
           return <Ionicons name={iconName} color={color} size={size} />;
 
         },
-        tabBarActiveTintColor: '#FFD700', 
+        tabBarActiveTintColor: Colors.primary, 
         tabBarInactiveTintColor: 'gray', 
         tabBarStyle: { backgroundColor: '#000' } 
       })}
     >
       <Tab.Screen name="Feeds" component={FeedsScreen} />
       <Tab.Screen name="Posts" component={PostsScreen} />
+      <Tab.Screen name="Connections" component={ConnectionsScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );

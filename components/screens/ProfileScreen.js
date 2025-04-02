@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Colors from '../../constants/colors';
 
 const ProfileScreen = () => {
   return (
@@ -17,7 +18,7 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000', // Black background
+    backgroundColor: Colors.background, // Black background
     padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -25,12 +26,12 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#FFD700', // Yellow for cinematic theme
+    color: Colors.primary, // Yellow for cinematic theme
     marginBottom: 20,
   },
   profileText: {
     fontSize: 16,
-    color: '#fff', // White text for readability
+    color: Colors.text, // White text for readability
     textAlign: 'center',
     marginBottom: 10,
     lineHeight: 24,
