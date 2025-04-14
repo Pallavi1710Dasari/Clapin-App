@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
-import Colors from '../../constants/colors';
+import {Colors} from '../../constants/constantStyles';
 
 const LoginScreen = ({ navigation }) => {
   return (
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: Colors.textBlack, // Black text on yellow button
     fontSize: 18,
-    //fontWeight: 'bold',
+    fontWeight: 'bold',
   },
   linkText: {
     marginTop: 20,
