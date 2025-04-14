@@ -1,4 +1,3 @@
-// constants/colors.js
 const Colors = {
     background: '#000000',      // black
     primary: '#FFD700',         // yellow
@@ -15,5 +14,13 @@ const Colors = {
     jobCardBackground: '#060126',  //Job Card Background
     iconsBackgroundColor: '#444'  //Icons Background Color
   };
+
+  const fontFamily= {
+    regular: 'Roboto-Regular',
+    bold: 'Roboto-Bold',
+    medium: 'Roboto-Medium',
+    light: 'Roboto-Light',
+  };
   
-  export default Colors;
+  
+  export { Colors, fontFamily };
