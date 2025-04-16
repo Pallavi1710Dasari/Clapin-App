@@ -5,21 +5,23 @@ import { Colors } from '../../../constants/constantStyles';
 const UserTypeSelector = ({ options, onSelect }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.sectionTitle}>I am a:</Text>
-      <View style={styles.userTypeOptions}>
+      <View style={styles.methodSelector}>
         {options.map((option) => (
           <TouchableOpacity
             key={option.type}
             style={[
-              styles.userTypeOption,
-              option.selected && styles.userTypeOptionSelected,
+              styles.methodButton,
+              option.selected && styles.activeMethodButton
             ]}
-            onPress={() => onSelect(option.type)}
+            onPress={() => {
+              console.log("Clicked option:", option.type);
+              onSelect(option.type);
+            }}
           >
             <Text
               style={[
-                styles.userTypeText,
-                option.selected && styles.userTypeTextSelected,
+                styles.methodButtonText,
+                option.selected && styles.activeMethodButtonText
               ]}
             >
               {option.label}
@@ -33,39 +35,38 @@ const UserTypeSelector = ({ options, onSelect }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 15,
+    marginBottom: 5,
   },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: Colors.text,
-    marginBottom: 10,
-  },
-  userTypeOptions: {
+  methodSelector: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(77, 75, 75, 0.3)',
+    borderRadius: 25,
+    alignSelf: 'center',
+    padding: 5,
+    width: '100%',
   },
-  userTypeOption: {
+  methodButton: {
     flex: 1,
-    padding: 10,
-    borderRadius: 8,
-    marginHorizontal: 4,
-    borderWidth: 1,
-    borderColor: Colors.borderColor,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 20,
+    backgroundColor: 'transparent',
     alignItems: 'center',
   },
-  userTypeOptionSelected: {
-    backgroundColor: Colors.primary,
-    borderColor: Colors.primary,
+  activeMethodButton: {
+    backgroundColor: "rgba(245, 216, 54, 0.75)",
   },
-  userTypeText: {
-    fontSize: 12,
+  methodButtonText: {
     color: Colors.text,
+    fontSize: 16,
+    opacity: 0.7,
   },
-  userTypeTextSelected: {
+  activeMethodButtonText: {
     color: Colors.textBlack,
     fontWeight: 'bold',
-  }
+    opacity: 1,
+  },
 });
 
 export default UserTypeSelector;

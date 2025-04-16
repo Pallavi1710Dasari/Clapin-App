@@ -7,7 +7,7 @@ const Colors = {
     textGray: 'gray',          // gray text
     placeholderTextColorPrimary: "#ddd",   //placeholder Text with more white
     placeholderTextColorSecondary: '#AAA',   //placeholder Text Color with less white
-    borderColor: '#FFD700',    //Border color
+    borderColor: 'rgba(247, 212, 15, 0.8)',    //Border color
     headerBackground: '#2a2a2a',  //Top Header Color
     seperatorLineColor: '#1f1e1e',   //Seperator Line Color
     iconsColor: '#FFFFFF',     //Icons Color

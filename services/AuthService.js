@@ -2,8 +2,62 @@
  * Authentication Service
  * Handles all API calls related to authentication
  */
+import axios from 'axios';
 
 const API_BASE_URL = 'https://cd6d0vje32.execute-api.ap-south-1.amazonaws.com/prod';
+
+// Create axios instance with default config
+const api = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  timeout: 10000, // 10 seconds timeout
+});
+
+
+
+/**
+ * Check if an attribute (username, email, phone) is available
+ * @param {Object} attributeData - Attribute data
+ * @param {string} attributeData.attribute_name - Name of attribute (username, email, phone_number)
+ * @param {string} attributeData.attribute_value - Value to check
+ * @returns {Promise} - API response
+ */
+export const checkAttributeAvailability = async (attributeData) => {
+  try {
+    const response = await api.post('/auth/check-attribute', attributeData);
+    
+    return {
+      data: response.data,
+      status: response.status,
+      ok: response.status >= 200 && response.status < 300
+    };
+  } catch (error) {
+    console.error('Attribute check error:', error);
+    
+    // Handle axios error response
+    if (error.response) {
+      return {
+        data: error.response.data,
+        status: error.response.status,
+        ok: false
+      };
+    } else if (error.request) {
+      return {
+        data: { error: 'No response from server' },
+        status: 0,
+        ok: false
+      };
+    } else {
+      return {
+        data: { error: error.message },
+        status: 0,
+        ok: false
+      };
+    }
+  }
+};
 
 /**
  * Register a new user
@@ -12,27 +66,43 @@ const API_BASE_URL = 'https://cd6d0vje32.execute-api.ap-south-1.amazonaws.com/pr
  * @param {string} userData.email - Email address
  * @param {string} userData.phone_number - Phone number
  * @param {string} userData.password - Password
- * @param {string} userData.user_type - User type (CREATOR, PRODUCTION, TALENT_SCOUT)
+ * @param {string} userData.user_type - User type (Individual, Company)
  * @returns {Promise} - API response
  */
-export const registerUser = async (userData) => {
+ export const registerUser = async (userData) => {
+  console.log("signUp auth called", userData)
   try {
-    const response = await fetch(`${API_BASE_URL}/auth/signup`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    });
-
+    const response = await api.post('/auth/signup', userData);
+    console.log("signUp response", userData)
+    
     return {
-      data: await response.json(),
+      data: response.data,
       status: response.status,
-      ok: response.ok
+      ok: response.status >= 200 && response.status < 300
     };
   } catch (error) {
     console.error('Registration error:', error);
-    throw error;
+    
+    // Handle axios error response
+    if (error.response) {
+      return {
+        data: error.response.data,
+        status: error.response.status,
+        ok: false
+      };
+    } else if (error.request) {
+      return {
+        data: { error: 'No response from server' },
+        status: 0,
+        ok: false
+      };
+    } else {
+      return {
+        data: { error: error.message },
+        status: 0,
+        ok: false
+      };
+    }
   }
 };
 
@@ -45,25 +115,125 @@ export const registerUser = async (userData) => {
  */
 export const confirmRegistration = async (confirmData) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/auth/signup/confirm`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(confirmData),
-    });
-
+    const response = await api.post('/auth/signup/confirm', confirmData);
+    
     return {
-      data: await response.json(),
+      data: response.data,
       status: response.status,
-      ok: response.ok
+      ok: response.status >= 200 && response.status < 300
     };
   } catch (error) {
     console.error('Confirmation error:', error);
-    throw error;
+    
+    // Handle axios error response
+    if (error.response) {
+      return {
+        data: error.response.data,
+        status: error.response.status,
+        ok: false
+      };
+    } else if (error.request) {
+      return {
+        data: { error: 'No response from server' },
+        status: 0,
+        ok: false
+      };
+    } else {
+      return {
+        data: { error: error.message },
+        status: 0,
+        ok: false
+      };
+    }
   }
 };
 
+/**
+ * Sign in a user
+ * @param {Object} signInData - Sign in data
+ * @param {string} signInData.attribute_name - Attribute used for signing in (username, email, phone_number)
+ * @param {string} signInData.attribute_value - Value of the attribute
+ * @param {string} signInData.password - User's password
+ * @returns {Promise} - API response with tokens
+ */
+export const signIn = async (signInData) => {
+  try {
+
+    console.log('Making signin API call with:', signInData);
+    const response = await api.post('/auth/signin', signInData);
+    console.log('Signin API response:', response);
+    
+    return {
+      data: response.data,
+      status: response.status,
+      ok: response.status >= 200 && response.status < 300
+    };
+    
+  } catch (error) {
+    console.error('Sign in error pallavi:', error.response ? error.response.data.error : 'No response data');
+    
+    if (error.response) {
+      return {
+        data: error.response.data,
+        status: error.response.status,
+        ok: false
+      };
+    } else if (error.request) {
+      return {
+        data: { error: 'No response from server' },
+        status: 0,
+        ok: false
+      };
+    } else {
+      return {
+        data: { error: error.message },
+        status: 0,
+        ok: false
+      };
+    }
+  }
+};
+
+/**
+ * Resend OTP for verification
+ * @param {Object} resendData - Data for resending OTP
+ * @param {string} resendData.attribute_name - Attribute name (username, email, phone_number)
+ * @param {string} resendData.attribute_value - Attribute value
+ * @returns {Promise} - API response
+ */
+export const resendOTP = async (resendData) => {
+  try {
+    const response = await api.post('/auth/signup/send-otp', resendData);
+    
+    return {
+      data: response.data,
+      status: response.status,
+      ok: response.status >= 200 && response.status < 300
+    };
+  } catch (error) {
+    console.error('Resend OTP error:', error);
+    
+    if (error.response) {
+      return {
+        data: error.response.data,
+        status: error.response.status,
+        ok: false
+      };
+    } else if (error.request) {
+      return {
+        data: { error: 'No response from server' },
+        status: 0,
+        ok: false
+      };
+    } else {
+      return {
+        data: { error: error.message },
+        status: 0,
+        ok: false
+      };
+    }
+  }
+};
 
 /**
  * Request password reset
@@ -73,28 +243,43 @@ export const confirmRegistration = async (confirmData) => {
  */
 export const requestPasswordReset = async (resetData) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(resetData),
-    });
-
+    const response = await api.post('/auth/forgot-password', resetData);
+    
     return {
-      data: await response.json(),
+      data: response.data,
       status: response.status,
-      ok: response.ok
+      ok: response.status >= 200 && response.status < 300
     };
   } catch (error) {
     console.error('Password reset request error:', error);
-    throw error;
+    
+    if (error.response) {
+      return {
+        data: error.response.data,
+        status: error.response.status,
+        ok: false
+      };
+    } else if (error.request) {
+      return {
+        data: { error: 'No response from server' },
+        status: 0,
+        ok: false
+      };
+    } else {
+      return {
+        data: { error: error.message },
+        status: 0,
+        ok: false
+      };
+    }
   }
 };
 
-// Export all auth services
 export default {
+  checkAttributeAvailability,
   registerUser,
   confirmRegistration,
-  requestPasswordReset
+  signIn,
+  requestPasswordReset,
+  resendOTP
 };

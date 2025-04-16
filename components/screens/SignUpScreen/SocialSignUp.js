@@ -6,7 +6,11 @@ import { Colors } from '../../../constants/constantStyles';
 const SocialSignUp = () => {
   return (
     <View style={styles.socialContainer}>
-      <Text style={styles.socialText}>Or sign up with</Text>
+       <View style={styles.dividerContainer}>
+          <View style={styles.dividerLine}></View>
+          <Text style={styles.dividerText}>or continue with</Text>
+          <View style={styles.dividerLine}></View>
+        </View>
       <View style={styles.socialButtons}>
         <TouchableOpacity style={styles.socialButton}>
           <Ionicons name="logo-google" size={20} color="#fff" />
@@ -35,6 +39,21 @@ const styles = StyleSheet.create({
   socialButtons: {
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  dividerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  dividerLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+  },
+  dividerText: {
+    paddingHorizontal: 10,
+    color: Colors.text,
+    opacity: 0.7,
   },
   socialButton: {
     width: 45,

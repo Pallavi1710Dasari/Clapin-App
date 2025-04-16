@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: Colors.textBlack, // Black text
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: 600,
   },
 });
 
