@@ -3,6 +3,7 @@
  * Handles all API calls related to authentication
  */
 import axios from 'axios';
+import SecureStorageService from './SecureStorageService';
 
 const API_BASE_URL = 'https://cd6d0vje32.execute-api.ap-south-1.amazonaws.com/prod';
 
@@ -236,6 +237,106 @@ export const resendOTP = async (resendData) => {
 };
 
 /**
+ * Sign out a user
+ * @returns {Promise} - API response
+ */
+export const signOut = async () => {
+  try {
+    // Get the token from secure storage
+    const token = await SecureStorageService.getAccessToken();
+    
+    if (!token) {
+      // If no token, just return success (user was already signed out)
+      return {
+        data: { message: "Already signed out" },
+        status: 200,
+        ok: true
+      };
+    }
+    
+    // Add the token to the headers
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    };
+    
+    const response = await api.post('/auth/sign-out', {}, { headers });
+    
+    return {
+      data: response.data,
+      status: response.status,
+      ok: response.status >= 200 && response.status < 300
+    };
+  } catch (error) {
+    console.error('Sign out error:', error);
+    
+    if (error.response) {
+      return {
+        data: error.response.data,
+        status: error.response.status,
+        ok: false
+      };
+    } else if (error.request) {
+      return {
+        data: { error: 'No response from server' },
+        status: 0,
+        ok: false
+      };
+    } else {
+      return {
+        data: { error: error.message },
+        status: 0, 
+        ok: false
+      };
+    }
+  }
+};
+
+
+/**
+ * Change user password
+ * @param {Object} data - Password change data
+ * @param {string} data.old_password - Current password
+ * @param {string} data.new_password - New password
+ * @param {string} data.access_token - Access token
+ * @returns {Promise} - API response
+ */
+export const changePassword = async (data) => {
+  try {
+    const response = await api.post('/auth/change-password', {
+      old_password: data.old_password,
+      new_password: data.new_password
+    }, {
+      headers: {
+        'Authorization': `Bearer ${data.access_token}`
+      }
+    });
+    
+    return {
+      data: response.data,
+      status: response.status,
+      ok: response.status >= 200 && response.status < 300
+    };
+  } catch (error) {
+    console.error('Change password error:', error);
+    
+    if (error.response) {
+      return {
+        data: error.response.data,
+        status: error.response.status,
+        ok: false
+      };
+    } else {
+      return {
+        data: { error: error.message || 'Network error' },
+        status: 0,
+        ok: false
+      };
+    }
+  }
+};
+
+/**
  * Request password reset
  * @param {Object} resetData - Password reset data
  * @param {string} resetData.username - Username or email
@@ -280,6 +381,8 @@ export default {
   registerUser,
   confirmRegistration,
   signIn,
+  signOut,
   requestPasswordReset,
+  changePassword,
   resendOTP
 };

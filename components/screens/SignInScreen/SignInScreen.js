@@ -24,9 +24,10 @@ import { AuthService } from '../../../services';
 import SecureStorageService from '../../../services/SecureStorageService';
 import styles from '../../../styles/SignInStyles';
 import { emailSchema, phoneSchema, passwordSchema } from '../../commonComponents/ValidationSchema';
-
+import { useAuth } from '../../../context/AuthContext';
 
 const SignInScreen = ({ navigation }) => {
+  const { signIn } = useAuth();
   // Auth method state
   const [activeMethod, setActiveMethod] = useState('email');
   const [authMethodSelection, setAuthMethodSelection] = useState([
@@ -52,18 +53,7 @@ const SignInScreen = ({ navigation }) => {
     password: ''
   });
 
-  // Check if already logged in
-  useEffect(() => {
-    checkLoginStatus();
-  }, [navigation]);
-
-  const checkLoginStatus = async () => {
-    const isUserLoggedIn = await SecureStorageService.isLoggedIn();
-    if (isUserLoggedIn) {
-      navigation.navigate('Home');
-    }
-  };
-
+  
   // Handle method selection
   const handleMethodSelect = (selectedType) => {
     const updated = authMethodSelection.map(item => ({
@@ -166,10 +156,7 @@ const SignInScreen = ({ navigation }) => {
   // Handle sign in button
   const handleSignIn = async () => {
     const isValid = await validateStep2();
-    console.log("signIn button clicked")
-    if (!isValid) return;
-    console.log("signIn button clicked validation cleared")
-    
+    if (!isValid) return;    
     setLoading(true);
     
     try {
@@ -181,14 +168,15 @@ const SignInScreen = ({ navigation }) => {
       
       console.log('Signing in with:', signInData);
       
-      const response = await AuthService.signIn(signInData);
+      // Use the signIn function from AuthContext
+      const result = await signIn(signInData);
       
-      if (response.ok) {
-        // Save tokens and user data
-        await SecureStorageService.saveTokens(response.data.data);
-        
-        // Navigate to home screen
-        navigation.navigate('Home');
+      if (result.success) {
+         // Clear the form fields
+          setEmail('');
+          setPhoneNumber('');
+          setPassword('');        
+          // AuthContext will handle the navigation automatically
       } else {
         handleSignInError(response);
       }

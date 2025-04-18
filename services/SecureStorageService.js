@@ -28,17 +28,21 @@ export const saveTokens = async (tokens) => {
       tokens.access_token
     );
     
-    await EncryptedStorage.setItem(
-      KEYS.REFRESH_TOKEN, 
-      tokens.refresh_token
-    );
+    if (tokens.refresh_token) {
+      await EncryptedStorage.setItem(
+        KEYS.REFRESH_TOKEN, 
+        tokens.refresh_token
+      );
+    }
     
-    await EncryptedStorage.setItem(
-      KEYS.ID_TOKEN, 
-      tokens.id_token
-    );
+    if (tokens.id_token) {
+      await EncryptedStorage.setItem(
+        KEYS.ID_TOKEN, 
+        tokens.id_token
+      );
+    }
     
-    console.log('Tokens securely stored', tokens);
+    console.log('Tokens securely stored');
   } catch (error) {
     console.error('Error storing tokens securely:', error);
     throw error;
