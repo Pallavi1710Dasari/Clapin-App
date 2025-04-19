@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FeedsScreen from '../screens/FeedsScreen/FeedsScreen';
 import PostsScreen from '../screens/PostsScreen';
-import ProfileScreen from '../screens/ProfileScreen';
+import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
 import ConnectionsScreen from '../screens/ConnectionsScreen';
 import { Colors } from '../../constants/constantStyles';
 

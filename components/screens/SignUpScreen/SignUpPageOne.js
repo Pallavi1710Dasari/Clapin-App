@@ -210,9 +210,9 @@ const SignUpPageOne = ({ navigation }) => {
         </TouchableOpacity>
 
         {/* Navigate to Login */}
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
           <Text style={styles.switchText}>
-            Already have an account? <Text style={styles.linkText}>Login</Text>
+            Already have an account? <Text style={styles.linkText}>Sign In</Text>
           </Text>
         </TouchableOpacity>
       </ScrollView>

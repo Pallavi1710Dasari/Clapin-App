@@ -4,7 +4,7 @@ import { Colors, fontFamily } from '../constants/constantStyles';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.background,
   },
   header: {
     paddingHorizontal: 16,
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: Colors.primary,
+    color: Colors.text,
   },
   passwordInputWrapper: {
     flexDirection: 'row',

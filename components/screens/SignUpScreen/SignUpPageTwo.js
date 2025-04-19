@@ -17,9 +17,10 @@ import SocialSignUp from './SocialSignUp';
 import SecureStorageService from '../../../services/SecureStorageService';
 import { emailSchema, phoneSchema, passwordSchema } from '../../commonComponents/ValidationSchema';
 import  {AuthService}  from '../../../services';
-
+import { useAuth } from '../../../context/AuthContext';
 
 const SignUpPageTwo = ({ route, navigation }) => {
+  const { signIn } = useAuth();
   // Get the data from previous page
   const { username, user_type } = route.params;
 
@@ -184,18 +185,11 @@ const SignUpPageTwo = ({ route, navigation }) => {
       
       console.log("Auto sign in with:", signInData);
       
-      const response = await AuthService.signIn(signInData);
+      const result = await signIn(signInData);
       
-      if (response.ok) {
-        // Save tokens and user data securely
-        await SecureStorageService.saveTokens(response.data.data);
-        
-        // Extract user data from id_token if available
-        if (response.data.data.id_token) {
-          await SecureStorageService.saveUserData({ username });
-        }
-          navigation.navigate('Home');
-      } else {
+      if (result.success) {
+      console.log("auth signIn conform", result)      
+     } else {
         // If auto sign-in fails, just navigate to the sign in screen
         Alert.alert(
           'Registration Successful',
@@ -218,7 +212,6 @@ const SignUpPageTwo = ({ route, navigation }) => {
 
   // Handle confirmation submission
   const handleConfirmSignUp = async () => {
-    console.log("otp wrong onconfirm")
     if (!confirmationCode.trim()) {
       setShowConfirmationModal(true);
       return;

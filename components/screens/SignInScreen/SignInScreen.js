@@ -9,6 +9,7 @@ import {
   ScrollView,
   Alert
 } from 'react-native';
+import { CommonActions } from '@react-navigation/native';
 
 // Components
 import AuthMethodSelector from './AuthMethodSelector';
@@ -176,9 +177,8 @@ const SignInScreen = ({ navigation }) => {
           setEmail('');
           setPhoneNumber('');
           setPassword('');        
-          // AuthContext will handle the navigation automatically
       } else {
-        handleSignInError(response);
+        handleSignInError(result);
       }
     } catch (error) {
       Alert.alert('Error', 'Network error. Please try again later.');
@@ -188,16 +188,35 @@ const SignInScreen = ({ navigation }) => {
     }
   };
 
-  const handleSignInError = (response) => {
-    if (response.status === 401) {
-      Alert.alert('Authentication Failed', 'Invalid credentials. Please try again.');
-    } else if (response.data.error === 'UserNotConfirmedException') {
+  // const handleSignInError = (response) => {
+  //   if (response.status === 401) {
+  //     Alert.alert('Authentication Failed', 'Invalid credentials. Please try again.');
+  //   } else if (response.data.error === 'UserNotConfirmedException') {
+  //     showVerificationAlert();
+  //   } else if (response.data.error === 'UserNotFoundException') {
+  //     showUserNotFoundAlert();
+  //   } else {
+  //     Alert.alert('Error', response.data.error || 'Something went wrong');
+  //     console.log("response", response.data)
+  //   }
+  // };
+
+  const handleSignInError = (result) => {
+    console.log("Sign in error result:", result);
+    
+    const errorMessage = result.error;
+    
+    if (errorMessage === 'UserNotConfirmedException' || errorMessage.includes('not confirmed')) {
       showVerificationAlert();
-    } else if (response.data.error === 'UserNotFoundException') {
+    } else if (errorMessage === 'UserNotFoundException' || errorMessage === 'User does not exist') {
       showUserNotFoundAlert();
+    } else if (errorMessage === 'NotAuthorizedException' || errorMessage.includes('Incorrect username or password')) {
+      Alert.alert('Authentication Failed', 'Incorrect username or password. Please try again.');
+    } else if (errorMessage === 'Network error') {
+      Alert.alert('Connection Error', 'Please check your internet connection and try again.');
     } else {
-      Alert.alert('Error', response.data.error || 'Something went wrong');
-      console.log("response", response.data)
+      Alert.alert('Sign In Error', errorMessage || 'An unexpected error occurred. Please try again later.');
+      console.log("Unhandled error type:", errorMessage);
     }
   };
 
@@ -220,10 +239,9 @@ const SignInScreen = ({ navigation }) => {
   const showUserNotFoundAlert = () => {
     Alert.alert(
       'User Not Found',
-      'We couldn\'t find an account with these credentials. Would you like to sign up?',
+      'We couldn\'t find an account with these credentials. Please check your information or create a new account.',
       [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Sign Up', onPress: () => navigation.navigate('SignUpPageOne') }
+        { text: 'OK', style: 'default' }
       ]
     );
   };

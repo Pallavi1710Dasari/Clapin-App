@@ -63,15 +63,48 @@ export const AuthProvider = ({ children }) => {
           
           return { success: true };
         } else {
-          console.log("error signIn wrong pw", response.data.error)
+          console.log("error signIn", response.data);
+      
+          // Extract specific error types from the response
+          let errorMessage = response.data?.error || 'Authentication failed';
+          
+          if (response.data && response.data.error) {
+            errorType = response.data.error;
+          } else if (response.status === 401) {
+            errorType = 'NotAuthorizedException';
+          }
+          
           return { 
             success: false, 
-            error: response.data.error || 'Authentication failed'
+            error: errorMessage
           };
         }
       } catch (error) {
-        console.error('Sign in error:', error);
-        return { success: false, error: 'Network error' };
+        console.error('Sign in network error:', error);
+        if (error.response) {
+          // The API responded with an error code
+          const status = error.response.status;
+          const errorData = error.response.data || {};
+          
+          // Extract the error message based on known error patterns
+          let errorMessage = errorData.error || 'Authentication failed';
+          
+          if (status === 401) {
+            errorMessage = 'NotAuthorizedException';
+          } else if (errorData.message && errorData.message.includes('not exist')) {
+            errorMessage = 'UserNotFoundException';
+          }
+          
+          return {
+            success: false,
+            error: errorMessage
+          };
+        }
+          // If there's no response, it's likely a network error
+          return { 
+            success: false, 
+            error: 'Network error' 
+          }; 
       } finally {
         setIsLoading(false);
       }

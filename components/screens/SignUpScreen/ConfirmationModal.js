@@ -565,7 +565,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#333',
   },
   verifyButtonText: {
-    color: Colors.text,
+    color: Colors.textBlack,
     fontSize: 16,
     fontWeight: 'bold',
   },

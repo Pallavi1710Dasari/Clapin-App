@@ -171,7 +171,7 @@ export const signIn = async (signInData) => {
     };
     
   } catch (error) {
-    console.error('Sign in error pallavi:', error.response ? error.response.data.error : 'No response data');
+    // console.error('Sign in error pallavi:', error.response ? error.response.data.error : 'No response data');
     
     if (error.response) {
       return {
@@ -179,13 +179,8 @@ export const signIn = async (signInData) => {
         status: error.response.status,
         ok: false
       };
-    } else if (error.request) {
-      return {
-        data: { error: 'No response from server' },
-        status: 0,
-        ok: false
-      };
-    } else {
+    } 
+    else {
       return {
         data: { error: error.message },
         status: 0,
