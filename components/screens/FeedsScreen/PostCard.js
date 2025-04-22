@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import styles from '../../../styles/FeedStyles';
 import { Colors } from '../../../constants/constantStyles';
 import JobCard from './JobCard';
@@ -24,15 +26,15 @@ const PostCard = ({ post, job }) => {
 
       <View style={styles.postFooter}>
         <TouchableOpacity style={styles.actionButton}>
-          <Ionicons name="heart-outline" size={18} color={Colors.iconsColor} />
+          <AntDesign name="hearto" size={18} color={Colors.iconsColor} />
           <Text style={styles.actionText}>156</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.actionButton}>
-          <Ionicons name="chatbubble-outline" size={18} color={Colors.iconsColor} />
+          <MaterialIcons name="comment" size={20} color={Colors.iconsColor} />
           <Text style={styles.actionText}>28</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.actionButton}>
-          <Ionicons name="share-outline" size={18} color={Colors.iconsColor} />
+          <MaterialIcons name="share" size={18} color={Colors.iconsColor} />
         </TouchableOpacity>
       </View>
     </View>

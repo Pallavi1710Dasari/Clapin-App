@@ -8,7 +8,8 @@ import {
   TextInput,
   StyleSheet 
 } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import { Colors } from '../../../constants/constantStyles';
 import { countryCodes } from '../../../data/countryCodes';
 
@@ -45,7 +46,7 @@ const CountryCodePicker = ({ selectedCode, onSelectCode }) => {
         onPress={() => setModalVisible(true)}
       >
         <Text style={styles.codeButtonText}>{selectedCode}</Text>
-        <Ionicons name="chevron-down-outline" size={16} color={Colors.primary} />
+        <MaterialIcons name="arrow-drop-down" size={16} color={Colors.primary} />
       </TouchableOpacity>
       
       <Modal
@@ -59,13 +60,12 @@ const CountryCodePicker = ({ selectedCode, onSelectCode }) => {
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>Select Country Code</Text>
               <TouchableOpacity onPress={() => setModalVisible(false)}>
-                <Text style={{color: Colors.text}}>x</Text>
-                {/* <Ionicons name="close-outline" size={28} color={Colors.primary} /> */}
+              <AntDesign name="close" size={20} color="#999" style={styles.searchIcon} />
               </TouchableOpacity>
             </View>
             
             <View style={styles.searchContainer}>
-              <Ionicons name="search-outline" size={20} color="#999" style={styles.searchIcon} />
+              <AntDesign name="search1" size={20} color="#999" style={styles.searchIcon} />
               <TextInput
                 style={styles.searchInput}
                 placeholder="Search by country or code"

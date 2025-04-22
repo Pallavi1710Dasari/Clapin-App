@@ -21,6 +21,11 @@ const Colors = {
     medium: 'Roboto-Medium',
     light: 'Roboto-Light',
   };
+
+  const images = {
+    logo: require('../assets/logoClapin.jpeg'),
+  };
   
   
-  export { Colors, fontFamily };
+  
+  export { Colors, fontFamily, images };

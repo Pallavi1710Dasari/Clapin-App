@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { 
   View, 
   Text, 
+  Image,
   TouchableOpacity, 
   ScrollView, 
   ActivityIndicator, 
@@ -18,6 +19,7 @@ import SecureStorageService from '../../../services/SecureStorageService';
 import { emailSchema, phoneSchema, passwordSchema } from '../../commonComponents/ValidationSchema';
 import  {AuthService}  from '../../../services';
 import { useAuth } from '../../../context/AuthContext';
+import { images } from '../../../constants/constantStyles';
 
 const SignUpPageTwo = ({ route, navigation }) => {
   const { signIn } = useAuth();
@@ -262,15 +264,17 @@ const SignUpPageTwo = ({ route, navigation }) => {
       >
         {/* Logo and Title */}
         <View style={styles.headerContainer}>
-          <Text style={styles.logoText}>Clapin</Text>
+          {/* <Text style={styles.logoText}>Clapin</Text>
           <Text style={styles.title}>Personal Details</Text>
           <Text style={styles.subtitle}>
             Tell us a bit more about yourself
-          </Text>
+          </Text> */}
+          <Image source={images['logo']} style={styles.logoImage} />
         </View>
 
         {/* Step Indicator */}
-        <View style={styles.stepContainer}>
+
+        {/* <View style={styles.stepContainer}>
           <View style={styles.stepIndicator}>
             <View style={styles.stepCircleCompleted}>
               <Text style={styles.stepNumberCompleted}>✓</Text>
@@ -284,16 +288,17 @@ const SignUpPageTwo = ({ route, navigation }) => {
             </View>
             <Text style={styles.stepTextActive}>Personal Details</Text>
           </View>
-        </View>
+        </View> */}
 
         {/* Username Summary */}
-        <View style={styles.summarySectionContainer}>
+
+        {/* <View style={styles.summarySectionContainer}>
           <Text style={styles.summaryLabel}>Username:</Text>
           <Text style={styles.summaryValue}>{username}</Text>
           
           <Text style={styles.summaryLabel}>Account Type:</Text>
           <Text style={styles.summaryValue}>{user_type}</Text>
-        </View>
+        </View> */}
 
         {/* Input Fields */}
         <View style={styles.formContainer}>
@@ -316,7 +321,7 @@ const SignUpPageTwo = ({ route, navigation }) => {
           />
 
           <InputField
-            iconName="lock-closed-outline"
+            iconName="lock-outline"
             placeholder="Password (min 8 characters)"
             value={formData.password}
             onChangeText={(text) => handleInputChange('password', text)}
@@ -365,7 +370,9 @@ const SignUpPageTwo = ({ route, navigation }) => {
         </View>
 
         {/* Social Sign Up Options */}
-        <SocialSignUp />
+
+        {/* <SocialSignUp /> */}
+        
       </ScrollView>
 
       {/* Confirmation Code Modal */}

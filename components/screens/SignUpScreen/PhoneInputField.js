@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Colors } from '../../../constants/constantStyles';
 import CountryCodePicker from './CountryCodePicker';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const PhoneInputField = ({
   value,
@@ -17,8 +17,8 @@ const PhoneInputField = ({
         styles.inputContainer, 
         error ? styles.inputError : null
       ]}>
-        <Ionicons 
-          name="call-outline" 
+        <MaterialIcons 
+          name="call" 
           size={20} 
           color={Colors.primary} 
           style={styles.inputIcon} 

@@ -179,27 +179,15 @@ const SignInScreen = ({ navigation }) => {
           setPassword('');        
       } else {
         handleSignInError(result);
+        console.log("pallavi error while signIn", result);
       }
     } catch (error) {
-      Alert.alert('Error', 'Network error. Please try again later.');
+      handleSignInError(error);
       console.error('Sign in error:', error);
     } finally {
       setLoading(false);
     }
   };
-
-  // const handleSignInError = (response) => {
-  //   if (response.status === 401) {
-  //     Alert.alert('Authentication Failed', 'Invalid credentials. Please try again.');
-  //   } else if (response.data.error === 'UserNotConfirmedException') {
-  //     showVerificationAlert();
-  //   } else if (response.data.error === 'UserNotFoundException') {
-  //     showUserNotFoundAlert();
-  //   } else {
-  //     Alert.alert('Error', response.data.error || 'Something went wrong');
-  //     console.log("response", response.data)
-  //   }
-  // };
 
   const handleSignInError = (result) => {
     console.log("Sign in error result:", result);
@@ -208,11 +196,12 @@ const SignInScreen = ({ navigation }) => {
     
     if (errorMessage === 'UserNotConfirmedException' || errorMessage.includes('not confirmed')) {
       showVerificationAlert();
-    } else if (errorMessage === 'UserNotFoundException' || errorMessage === 'User does not exist') {
-      showUserNotFoundAlert();
-    } else if (errorMessage === 'NotAuthorizedException' || errorMessage.includes('Incorrect username or password')) {
+    }else if (errorMessage === 'NotAuthorizedException' || errorMessage.includes('Incorrect username or password')) {
       Alert.alert('Authentication Failed', 'Incorrect username or password. Please try again.');
-    } else if (errorMessage === 'Network error') {
+    }
+     else if (errorMessage === 'UserNotFoundException' || errorMessage === 'User does not exist') {
+      showUserNotFoundAlert();
+    }  else if (errorMessage === 'Network error') {
       Alert.alert('Connection Error', 'Please check your internet connection and try again.');
     } else {
       Alert.alert('Sign In Error', errorMessage || 'An unexpected error occurred. Please try again later.');
@@ -282,11 +271,11 @@ const SignInScreen = ({ navigation }) => {
   const renderStep2 = () => {
     return (
       <>
-        <UserInfoDisplay
+        {/* <UserInfoDisplay
           label={activeMethod === 'email' ? 'Email/Username:' : 'Phone:'}
           value={attributeValue}
           onEdit={() => setStep(1)}
-        />
+        /> */}
 
         <PasswordInput
           value={password}
@@ -345,7 +334,7 @@ const SignInScreen = ({ navigation }) => {
         )}
 
         {/* Social Login Options */}
-        <SocialSignUp/>
+        {/* <SocialSignUp/> */}
 
         {/* Navigation */}
         <View style={styles.navigationContainer}>

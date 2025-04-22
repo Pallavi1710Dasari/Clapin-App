@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from '../../../constants/constantStyles';
 
 const InputField = ({
@@ -19,7 +20,7 @@ const InputField = ({
   return (
     <View style={styles.container}>
       <View style={[styles.inputContainer, error ? styles.inputError : null]}>
-        <Ionicons name={iconName} size={20} color={Colors.primary} style={styles.inputIcon} />
+        <MaterialIcons name={iconName} size={20} color={Colors.primary} style={styles.inputIcon} />
         <TextInput
           style={styles.input}
           placeholder={placeholder}
@@ -32,8 +33,8 @@ const InputField = ({
         />
         {showEye && (
           <TouchableOpacity onPress={onEyePress} style={styles.eyeIcon}>
-            <Ionicons
-              name={eyeValue ? 'eye-off-outline' : 'eye-outline'}
+            <Entypo
+              name={eyeValue ? 'eye-with-line' : 'eye'}
               size={20}
               color={Colors.primary}
             />

@@ -4,13 +4,12 @@ import { Colors } from '../constants/constantStyles';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background, // Black background
+    backgroundColor: Colors.background, 
   },
   scrollContainer: {
-    flexGrow: 1,
-    paddingHorizontal: 25,
-    paddingVertical: 40,
-    paddingBottom: 60,
+      flexGrow: 1,
+      justifyContent: 'center',
+      padding: 20,
   },
   headerContainer: {
     alignItems: 'center',
@@ -47,7 +46,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.primary,
     paddingVertical: 15,
-    borderRadius: 8,
+    borderRadius: 30,
     width: '100%',
     alignItems: 'center',
     marginBottom: 20,
@@ -86,8 +85,8 @@ const styles = StyleSheet.create({
     width: '40%',
   },
   stepCircleActive: {
-    width: 36,
-    height: 36,
+    width: 26,
+    height: 26,
     borderRadius: 18,
     backgroundColor: Colors.primary,
     justifyContent: 'center',
@@ -95,8 +94,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   stepCircleInactive: {
-    width: 36,
-    height: 36,
+    width: 26,
+    height: 26,
     borderRadius: 18,
     backgroundColor: '#333',
     justifyContent: 'center',
@@ -106,8 +105,8 @@ const styles = StyleSheet.create({
     borderColor: '#444',
   },
   stepCircleCompleted: {
-    width: 36,
-    height: 36,
+    width: 26,
+    height: 26,
     borderRadius: 18,
     backgroundColor: '#2E7D32', // Green for completed
     justifyContent: 'center',
@@ -146,13 +145,13 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 2,
     backgroundColor: '#333',
-    marginHorizontal: 5,
+    marginHorizontal: 2,
   },
   stepDividerActive: {
     flex: 1,
     height: 2,
     backgroundColor: Colors.primary,
-    marginHorizontal: 5,
+    marginHorizontal: 2,
   },
 
   // Section containers
@@ -161,7 +160,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: 400,
     color: Colors.text,
     marginBottom: 15,
   },
@@ -202,7 +201,7 @@ const styles = StyleSheet.create({
   backButton: {
     backgroundColor: '#333',
     paddingVertical: 15,
-    borderRadius: 8,
+    borderRadius: 30,
     width: '30%',
     alignItems: 'center',
     borderWidth: 1,
@@ -216,7 +215,7 @@ const styles = StyleSheet.create({
   signUpButton: {
     backgroundColor: Colors.primary,
     paddingVertical: 15,
-    borderRadius: 8,
+    borderRadius: 30,
     width: '65%',
     alignItems: 'center',
     elevation: 2,
@@ -303,6 +302,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    borderWidth: 3,
+    borderColor: Colors.primary,
+  },
+  logoImage:{
+    width: 200,
+    height: 110,
+    marginBottom:30,
+  }
 });
 
 export default styles;

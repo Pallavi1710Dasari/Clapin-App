@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { 
   View, 
   Text, 
+  Image,
   TouchableOpacity, 
   ScrollView, 
   ActivityIndicator, 
@@ -15,6 +16,7 @@ import UserTypeSelector from './UserTypeSelector';
 import { AuthService } from '../../../services';
 import { usernameSchema } from '../../commonComponents/ValidationSchema';
 import styles from '../../../styles/SignUpStyles';
+import { images } from '../../../constants/constantStyles';
 
 const SignUpPageOne = ({ navigation }) => {
   // Form state
@@ -146,15 +148,20 @@ const SignUpPageOne = ({ navigation }) => {
       >
         {/* Logo and Title */}
         <View style={styles.headerContainer}>
-          <Text style={styles.logoText}>Clapin</Text>
+          {/* <Text style={styles.logoText}>Clapin</Text>
           <Text style={styles.title}>Create Account</Text>
           <Text style={styles.subtitle}>
             Join the community of film professionals and artists
-          </Text>
+          </Text> */}
+          {/* <Image 
+            source={{ uri: 'https://randomuser.me/api/portraits/men/1.jpg' }} 
+            style={styles.profileImage} 
+          /> */}
+          <Image source={images['logo']} style={styles.logoImage} />
         </View>
 
         {/* Step Indicator */}
-        <View style={styles.stepContainer}>
+        {/* <View style={styles.stepContainer}>
           <View style={styles.stepIndicator}>
             <View style={styles.stepCircleActive}>
               <Text style={styles.stepNumberActive}>1</Text>
@@ -168,7 +175,7 @@ const SignUpPageOne = ({ navigation }) => {
             </View>
             <Text style={styles.stepTextInactive}>Personal Details</Text>
           </View>
-        </View>
+        </View> */}
 
         {/* User Type Selection */}
         <View style={styles.sectionContainer}>
@@ -205,7 +212,7 @@ const SignUpPageOne = ({ navigation }) => {
           {checking ? (
             <ActivityIndicator size="small" color={styles.buttonText.color} />
           ) : (
-            <Text style={styles.buttonText}>Continue</Text>
+            <Text style={styles.buttonText}>Next</Text>
           )}
         </TouchableOpacity>
 

@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
       left: 0,
       right: 0,
       height: '50%',
-      backgroundColor: 'rgba(255,215,0,0.1)', // Soft yellow gradient effect
+      backgroundColor: 'rgba(255,215,0,0.1)', 
     },
     scrollContainer: {
       flexGrow: 1,

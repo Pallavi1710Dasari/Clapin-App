@@ -43,12 +43,13 @@ export const AuthProvider = ({ children }) => {
         const response = await AuthService.signIn(loginData);
         
         if (response.ok) {
-          console.log("Sign-in successful, response:", response.data.data.AuthenticationResult);
+          console.log("Sign-in successful, response:", response.data.data);
           // Extract tokens from the response
-          const authResult = response.data.data.AuthenticationResult;
-          const access_token = authResult.AccessToken;
-          const id_token = authResult.IdToken;
-          const refresh_token = authResult.RefreshToken;
+          const authResult = response.data.data;
+          console.log("AccessToken", authResult.access_token)
+          const access_token = authResult.access_token;
+          const id_token = authResult.id_token;
+          const refresh_token = authResult.refresh_token;
           
           // Store tokens securely
           await SecureStorageService.saveTokens({

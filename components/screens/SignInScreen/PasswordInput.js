@@ -1,14 +1,15 @@
 import React from 'react';
 import { View, TextInput, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import { Colors } from '../../../constants/constantStyles';
 
 const PasswordInput = ({ value, onChangeText, showPassword, toggleShowPassword, error }) => {
   return (
     <>
       <View style={styles.inputWrapper}>
-        <Ionicons 
-          name="lock-closed-outline" 
+        <Entypo 
+          name="lock" 
           size={20} 
           color={Colors.placeholderTextColorSecondary} 
           style={styles.inputIcon} 
@@ -25,8 +26,8 @@ const PasswordInput = ({ value, onChangeText, showPassword, toggleShowPassword, 
           style={styles.eyeIcon} 
           onPress={toggleShowPassword}
         >
-          <Ionicons
-            name={showPassword ? 'eye-off-outline' : 'eye-outline'}
+          <Entypo
+            name={showPassword ? 'eye-with-line' : 'eye'}
             size={20}
             color={Colors.primary}
           />

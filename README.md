@@ -13,3 +13,12 @@
     -> In terminal, go to android /cd android.
     ->"./gradlew clean"   give this command to clean.
     ->"./gradlew assembleRelease"   The command ./gradlew assembleRelease is used to generate a release APK for your React Native app on Android.
+
+ =>  For icons 
+    ->  import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+        import AntDesign from 'react-native-vector-icons/AntDesign';
+        import Entypo from 'react-native-vector-icons/Entypo';   
+
+=> To generate updated apk  
+    -> cd android 
+    -> ./gradlew assembleRelease       

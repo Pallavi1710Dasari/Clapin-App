@@ -9,7 +9,8 @@ import {
   ActivityIndicator,
   Alert
 } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons'; 
+import Entypo from 'react-native-vector-icons/Entypo';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import { Colors } from '../../../constants/constantStyles';
 import SecureStorageService from '../../../services/SecureStorageService';
 import { AuthService } from '../../../services';
@@ -56,11 +57,12 @@ const ChangePasswordModal = ({ visible, onClose }) => {
         setNewPassword('');
         onClose();
       } else {
-        const errorMsg = response.data?.error || response.data?.message || 'Failed to change password';
+        console.log("change pw error", response)
+        const errorMsg = response.data?.message || response.data?.error || 'Failed to change password';
         Alert.alert('Error', errorMsg);
       }
     } catch (error) {
-      console.error('Change password error:', error);
+      console.error('Change password error model:', error);
       Alert.alert('Error', 'An error occurred. Please try again.');
     } finally {
       setLoading(false);
@@ -78,7 +80,7 @@ const ChangePasswordModal = ({ visible, onClose }) => {
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>Change Password</Text>
             <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close" size={24} color="#fff" />
+              <AntDesign name="close" size={24} color="#fff" />
             </TouchableOpacity>
           </View>
           
@@ -96,8 +98,8 @@ const ChangePasswordModal = ({ visible, onClose }) => {
               style={styles.eyeIcon} 
               onPress={() => setShowOldPassword(!showOldPassword)}
             >
-              <Ionicons
-                name={showOldPassword ? 'eye-off-outline' : 'eye-outline'}
+              <Entypo
+                name={showOldPassword ? 'eye-with-line' : 'eye'}
                 size={20}
                 color={Colors.primary}
               />
@@ -118,8 +120,8 @@ const ChangePasswordModal = ({ visible, onClose }) => {
               style={styles.eyeIcon} 
               onPress={() => setShowNewPassword(!showNewPassword)}
             >
-              <Ionicons
-                name={showNewPassword ? 'eye-off-outline' : 'eye-outline'}
+              <Entypo
+                name={showNewPassword ? 'eye-with-lin' : 'eye'}
                 size={20}
                 color={Colors.primary}
               />

@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 import { Colors } from '../../../constants/constantStyles'; 
 import { useAuth } from '../../../context/AuthContext'; 
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ChangePasswordModal from './ChangePasswordModal'; 
 import styles from '../../../styles/ProfileStyles';
 
@@ -90,7 +91,7 @@ const ProfileScreen = () => {
             style={styles.changePasswordButton} 
             onPress={handleOpenModal}
           >
-            <Ionicons name="key-outline" size={18} color="#fff" />
+            <MaterialIcons name="vpn-key" size={20} color="#fff" />
             <Text style={styles.actionButtonText}>Change Password</Text>
           </TouchableOpacity>
           
@@ -98,7 +99,7 @@ const ProfileScreen = () => {
             style={styles.signOutButton} 
             onPress={handleSignOut}
           >
-            <Ionicons name="log-out-outline" size={18} color={Colors.primary} />
+            <Entypo name="log-out" size={18} color={Colors.primary} />
             <Text style={styles.signOutButtonText}>Sign Out</Text>
           </TouchableOpacity>
         </View>

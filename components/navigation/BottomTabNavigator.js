@@ -1,11 +1,11 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import FeedsScreen from '../screens/FeedsScreen/FeedsScreen';
 import PostsScreen from '../screens/PostsScreen';
 import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
 import ConnectionsScreen from '../screens/ConnectionsScreen';
 import { Colors } from '../../constants/constantStyles';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,18 +18,18 @@ const BottomTabNavigator = () => {
         tabBarIcon: ({ color, size }) => {
           let iconName;
           if (route.name === 'Feeds') {
-            iconName = 'home-outline';
+            iconName = 'home';
           } else if (route.name === 'Posts') {
-            iconName = 'create';
+            iconName = 'plussquareo';
           } 
           else if (route.name === 'Connections') {
-            iconName = 'person';
+            iconName = 'adduser';
           }
           else if (route.name === 'Profile') {
-            iconName = 'person';
+            iconName = 'profile';
           }
           
-          return <Ionicons name={iconName} color={color} size={size} />;
+          return <AntDesign name={iconName} color={color} size={size} />;
 
         },
         tabBarActiveTintColor: Colors.primary, 

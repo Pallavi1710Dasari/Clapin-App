@@ -74,7 +74,7 @@ export const checkAttributeAvailability = async (attributeData) => {
   console.log("signUp auth called", userData)
   try {
     const response = await api.post('/auth/signup', userData);
-    console.log("signUp response", userData)
+    console.log("signUp response", response)
     
     return {
       data: response.data,
@@ -162,7 +162,7 @@ export const signIn = async (signInData) => {
 
     console.log('Making signin API call with:', signInData);
     const response = await api.post('/auth/signin', signInData);
-    console.log('Signin API response:', response);
+    console.log('Signin API response:', response.data);
     
     return {
       data: response.data,
@@ -340,6 +340,7 @@ export const changePassword = async (data) => {
 export const requestPasswordReset = async (resetData) => {
   try {
     const response = await api.post('/auth/forgot-password', resetData);
+    console.log("signOut api called", response);
     
     return {
       data: response.data,

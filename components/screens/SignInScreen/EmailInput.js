@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, TextInput, Text, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from '../../../constants/constantStyles';
 
 const EmailInput = ({ value, onChangeText, error }) => {
   return (
     <>
       <View style={styles.inputWrapper}>
-        <Ionicons 
+        <MaterialIcons 
           name="mail-outline" 
           size={20} 
           color={Colors.placeholderTextColorSecondary} 
