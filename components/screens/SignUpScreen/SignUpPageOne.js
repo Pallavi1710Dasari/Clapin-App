@@ -40,6 +40,7 @@ const SignUpPageOne = ({ navigation }) => {
 
   // Handle input changes
   const handleInputChange = (field, value) => {
+    const updatedValue = field === 'username' ? value.toLowerCase() : value;
     setFormData({
       ...formData,
       [field]: value
@@ -158,6 +159,7 @@ const SignUpPageOne = ({ navigation }) => {
             style={styles.profileImage} 
           /> */}
           <Image source={images['logo']} style={styles.logoImage} />
+          <Text style={styles.tagline}>Connect. Create. Collaborate.</Text>
         </View>
 
         {/* Step Indicator */}

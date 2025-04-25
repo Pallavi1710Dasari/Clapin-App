@@ -1,25 +1,23 @@
 import { StyleSheet } from 'react-native';
-import { Colors, fontFamily } from '../constants/constantStyles';
+import { Colors } from '../constants/constantStyles';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
-  },
-  header: {
-    paddingHorizontal: 16,
-    paddingTop: 50,
-    paddingBottom: 16,
-  },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#fff',
+    backgroundColor: '#000',
   },
   profileSection: {
-    alignItems: 'center',
+    // alignItems: 'center',
+    paddingVertical: 2,
     paddingHorizontal: 16,
-    paddingVertical: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#222',
+  },
+  profileImageContainer: {
+    position: 'relative',
+    marginBottom: 16,
+    alignItems:"center",
+    justifyContent:'center'
   },
   profileImage: {
     width: 100,
@@ -28,153 +26,114 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: Colors.primary,
   },
+  editProfileImageButton: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    backgroundColor: Colors.primary,
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: '#000',
+  },
   profileName: {
     fontSize: 22,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginTop: 12,
+    fontWeight: '400',
+    color: Colors.placeholderTextColorPrimary,
+    marginBottom: 4,
+  },
+  profileUsername: {
+    fontSize: 16,
+    color: Colors.placeholderTextColorSecondary,
+    marginBottom: 8,
+    marginRight:50,
+  },
+  profileDetailsNames:{
+    flexDirection:'row',
+    justifyContent:'space-between'
   },
   profileRole: {
     fontSize: 16,
-    color: Colors.primary,
-    marginTop: 4,
+    color: Colors.placeholderTextColorPrimary,
+    marginBottom: 8,
+  },
+  profileContainer: {
+    // marginLeft:10,
+    // marginRight:10,
+    flexDirection: 'row',
+    justifyContent:'space-around'
+  },
+  profileDetailsContainer:{
+    marginLeft:5,
+  },
+  locationContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   profileLocation: {
     fontSize: 14,
-    color: '#aaa',
-    marginTop: 4,
+    color: Colors.placeholderTextColorSecondary,
+    marginLeft: 2,
   },
-  statsContainer: {
+  profileActionsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: '#222',
-    marginHorizontal: 16,
-    marginVertical: 16,
-    borderRadius: 12,
-    padding: 16,
+    marginTop: 20,
+    width: '100%',
   },
-  statItem: {
-    alignItems: 'center',
+  bioContainer: {
+    width: '100%',
+    marginTop: 16,
   },
-  statNumber: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#fff',
-  },
-  statLabel: {
+  bioText: {
     fontSize: 14,
-    color: '#aaa',
-    marginTop: 4,
+    lineHeight: 20,
+    color: '#ddd',
+    textAlign: 'left',
   },
   sectionContainer: {
-    backgroundColor: '#222',
-    marginHorizontal: 16,
-    marginBottom: 16,
-    borderRadius: 12,
     padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#222',
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: Colors.primary,
-    marginBottom: 10,
-  },
-  bioText: {
-    fontSize: 15,
-    color: '#ddd',
-    lineHeight: 22,
-  },
-  accountActions: {
-    marginHorizontal: 16,
-    marginTop: 20,
-    marginBottom: 30,
-  },
-  changePasswordButton: {
-    backgroundColor: '#444',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    borderRadius: 8,
+    fontWeight: '350',
+    color: '#fff',
     marginBottom: 12,
   },
-  actionButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    marginLeft: 8,
-  },
-  signOutButton: {
-    borderWidth: 1,
-    borderColor: Colors.primary,
+  // Post grid styles
+  postsContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    borderRadius: 8,
-    backgroundColor: 'transparent',
+    flexWrap: 'wrap',
   },
-  signOutButtonText: {
-    color: Colors.primary,
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginLeft: 8,
+  postTabs: {
+    flexDirection: 'row',
+    borderTopWidth: 1,
+    borderTopColor: '#222',
   },
-  modalContainer: {
+  postTab: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    paddingVertical: 10,
   },
-  modalContent: {
-    width: '90%',
-    backgroundColor: '#222',
-    borderRadius: 12,
+  activeTab: {
+    borderBottomWidth: 2,
+    borderBottomColor: Colors.primary,
+  },
+  emptyPostsContainer: {
     padding: 20,
-    borderWidth: 1,
-    borderColor: Colors.primary,
-  },
-  modalHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
+    justifyContent: 'center',
+    height: 200,
   },
-  modalTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: Colors.text,
-  },
-  passwordInputWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#333',
-    borderRadius: 8,
-    marginBottom: 16,
-    paddingHorizontal: 12,
-  },
-  passwordInput: {
-    flex: 1,
-    height: 50,
-    color: '#fff',
-    fontSize: 16,
-  },
-  eyeIcon: {
-    padding: 8,
-  },
-  updatePasswordButton: {
-    backgroundColor: Colors.primary,
-    paddingVertical: 14,
-    borderRadius: 8,
-    alignItems: 'center',
+  emptyPostsText: {
+    color: '#666',
+    textAlign: 'center',
     marginTop: 10,
-  },
-  disabledButton: {
-    opacity: 0.7,
-  },
-  updatePasswordText: {
-    color: '#000',
-    fontSize: 16,
-    fontWeight: 'bold',
   },
 });
 

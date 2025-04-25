@@ -114,9 +114,14 @@ export const AuthProvider = ({ children }) => {
     signOut: async () => {
       setIsLoading(true);
       try {
-       // Clear storage first before updating state
-       await SecureStorageService.clearAuthData();
+
+        const signOutResponse = await AuthService.signOut();
         
+        console.log("Sign out API response:", signOutResponse);
+        
+        // Whether the API call succeeds or fails, we should clear local storage
+        await SecureStorageService.clearAuthData();
+        console.log("Auth data cleared from secure storage");
        // Update state after storage is cleared
        setUserToken(null);
        setUserData(null);

@@ -4,16 +4,8 @@ import * as yup from 'yup';
 export const usernameSchema = yup
   .string()
   .required('Username is required')
-  .min(3, 'Username must be at least 3 characters')
-  .matches(
-    /^[a-z]/, 
-    'Username must start with a lowercase letter'
-  )
-  .test(
-    'no-uppercase-first', 
-    'First letter must be lowercase', 
-    value => !value || value.charAt(0) !== value.charAt(0).toUpperCase()
-  );
+  .min(3, 'Username must be at least 3 characters');
+  
 
 // Email validation
 export const emailSchema = yup

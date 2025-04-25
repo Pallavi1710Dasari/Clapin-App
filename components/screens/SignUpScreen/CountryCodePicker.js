@@ -46,7 +46,7 @@ const CountryCodePicker = ({ selectedCode, onSelectCode }) => {
         onPress={() => setModalVisible(true)}
       >
         <Text style={styles.codeButtonText}>{selectedCode}</Text>
-        <MaterialIcons name="arrow-drop-down" size={16} color={Colors.primary} />
+        <MaterialIcons name="arrow-drop-down" size={16} color={Colors.placeholderTextColorPrimary} />
       </TouchableOpacity>
       
       <Modal
@@ -60,7 +60,7 @@ const CountryCodePicker = ({ selectedCode, onSelectCode }) => {
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>Select Country Code</Text>
               <TouchableOpacity onPress={() => setModalVisible(false)}>
-              <AntDesign name="close" size={20} color="#999" style={styles.searchIcon} />
+              <AntDesign name="close" size={20} color={Colors.placeholderTextColorSecondary} style={styles.searchIcon} />
               </TouchableOpacity>
             </View>
             
@@ -168,11 +168,11 @@ const styles = StyleSheet.create({
     width: 70,
     fontSize: 16,
     fontWeight: 'bold',
-    color: Colors.primary,
+    color: Colors.placeholderTextColorPrimary,
   },
   countryName: {
     fontSize: 16,
-    color: Colors.text,
+    color: Colors.placeholderTextColorSecondary,
   },
 });
 

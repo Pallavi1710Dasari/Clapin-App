@@ -28,6 +28,7 @@ const api = axios.create({
 export const checkAttributeAvailability = async (attributeData) => {
   try {
     const response = await api.post('/auth/check-attribute', attributeData);
+    console.log("checkattribute api called", response);
     
     return {
       data: response.data,
@@ -74,7 +75,7 @@ export const checkAttributeAvailability = async (attributeData) => {
   console.log("signUp auth called", userData)
   try {
     const response = await api.post('/auth/signup', userData);
-    console.log("signUp response", response)
+    console.log("signUp API called", response)
     
     return {
       data: response.data,
@@ -117,6 +118,7 @@ export const checkAttributeAvailability = async (attributeData) => {
 export const confirmRegistration = async (confirmData) => {
   try {
     const response = await api.post('/auth/signup/confirm', confirmData);
+    console.log("confirm signUp api called", response);
     
     return {
       data: response.data,
@@ -162,7 +164,8 @@ export const signIn = async (signInData) => {
 
     console.log('Making signin API call with:', signInData);
     const response = await api.post('/auth/signin', signInData);
-    console.log('Signin API response:', response.data);
+
+    console.log('Signin API called:', response.data);
     
     return {
       data: response.data,
@@ -200,6 +203,7 @@ export const signIn = async (signInData) => {
 export const resendOTP = async (resendData) => {
   try {
     const response = await api.post('/auth/signup/send-otp', resendData);
+    console.log("resend api called", response);
     
     return {
       data: response.data,
@@ -256,6 +260,7 @@ export const signOut = async () => {
     };
     
     const response = await api.post('/auth/sign-out', {}, { headers });
+    console.log("signOut api called", response);
     
     return {
       data: response.data,
@@ -306,6 +311,8 @@ export const changePassword = async (data) => {
         'Authorization': `Bearer ${data.access_token}`
       }
     });
+
+    console.log("changePassword api called", response);
     
     return {
       data: response.data,
@@ -313,7 +320,7 @@ export const changePassword = async (data) => {
       ok: response.status >= 200 && response.status < 300
     };
   } catch (error) {
-    console.error('Change password error:', error);
+    console.error('Change password error:', error.response.data.error);
     
     if (error.response) {
       return {
@@ -340,7 +347,7 @@ export const changePassword = async (data) => {
 export const requestPasswordReset = async (resetData) => {
   try {
     const response = await api.post('/auth/forgot-password', resetData);
-    console.log("signOut api called", response);
+    console.log("forgot password api called", response);
     
     return {
       data: response.data,

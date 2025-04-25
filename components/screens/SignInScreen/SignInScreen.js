@@ -7,7 +7,8 @@ import {
   KeyboardAvoidingView, 
   Platform,
   ScrollView,
-  Alert
+  Alert,
+  Image
 } from 'react-native';
 import { CommonActions } from '@react-navigation/native';
 
@@ -19,6 +20,7 @@ import PasswordInput from './PasswordInput';
 import UserInfoDisplay from './UserInfoDisplay';
 import SocialSignUp from '../SignUpScreen/SocialSignUp';
 import ActionButton from '../../commonComponents/ActionButton';
+import { images } from '../../../constants/constantStyles';
 
 // Services & Validation
 import { AuthService } from '../../../services';
@@ -310,7 +312,8 @@ const SignInScreen = ({ navigation }) => {
 
         {/* Logo or App Name */}
         <View style={styles.logoContainer}>
-          <Text style={styles.logo}>Clapin</Text>
+          <Image source={images['logo']} style={styles.logoImage} />
+          {/* <Text style={styles.logo}>Clapin</Text> */}
           <Text style={styles.tagline}>Connect. Create. Collaborate.</Text>
         </View>
 

@@ -20,7 +20,7 @@ const InputField = ({
   return (
     <View style={styles.container}>
       <View style={[styles.inputContainer, error ? styles.inputError : null]}>
-        <MaterialIcons name={iconName} size={20} color={Colors.primary} style={styles.inputIcon} />
+        <MaterialIcons name={iconName} size={20} color={Colors.placeholderTextColorSecondary} style={styles.inputIcon} />
         <TextInput
           style={styles.input}
           placeholder={placeholder}
@@ -36,7 +36,7 @@ const InputField = ({
             <Entypo
               name={eyeValue ? 'eye-with-line' : 'eye'}
               size={20}
-              color={Colors.primary}
+              color={Colors.placeholderTextColorSecondary}
             />
           </TouchableOpacity>
         )}
@@ -48,7 +48,7 @@ const InputField = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 8,
+    marginBottom: 30,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.input,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: Colors.borderColor,
+    borderColor: Colors.textGray,
   },
   inputError: {
     borderColor: '#FF6B6B',

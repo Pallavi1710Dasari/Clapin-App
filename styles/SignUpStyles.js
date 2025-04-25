@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Colors.text,
     textAlign: 'center',
-    marginBottom: 15,
+    marginBottom: 5,
   },
   formContainer: {
-    marginBottom: 15,
+    marginBottom: 5,
   },
   termsText: {
     color: Colors.text,
@@ -44,7 +44,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.background,
+    borderWidth:1,
+    borderColor:Colors.primary,
     paddingVertical: 15,
     borderRadius: 30,
     width: '100%',
@@ -56,8 +58,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 2,
   },
+  tagline: {
+    fontSize: 14,
+    color: Colors.text,
+    opacity: 1.0,
+  },
   buttonText: {
-    color: Colors.textBlack,
+    color: Colors.primary,
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -213,7 +220,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   signUpButton: {
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.background,
+    borderWidth:1,
+    borderColor:Colors.primary,
     paddingVertical: 15,
     borderRadius: 30,
     width: '65%',

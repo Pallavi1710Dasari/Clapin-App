@@ -192,6 +192,11 @@ const styles = StyleSheet.create({
       marginBottom: 10,
       marginLeft: 5,
     },
+    logoImage:{
+      width: 200,
+      height: 110,
+      marginBottom:10,
+    }
   });
   
   export default styles;

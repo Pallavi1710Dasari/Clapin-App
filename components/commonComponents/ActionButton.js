@@ -23,17 +23,20 @@ const ActionButton = ({ title, onPress, disabled, loading }) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: Colors.primary,
+    //backgroundColor: Colors.primary,
     paddingVertical: 15,
     borderRadius: 30,
+    borderColor: Colors.primary,
+    borderWidth:1,
     alignItems: 'center',
     width: '100%',
   },
   disabledButton: {
-    backgroundColor: 'rgba(255,215,0,0.5)',
+    //backgroundColor: 'rgba(255,215,0,0.5)',
+    color: 'rgba(255,215,0,0.5)',
   },
   buttonText: {
-    color: Colors.textBlack,
+    color: Colors.primary,
     fontSize: 18,
     fontWeight: 'bold',
   },

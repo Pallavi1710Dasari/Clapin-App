@@ -20,7 +20,7 @@ const PhoneInputField = ({
         <MaterialIcons 
           name="call" 
           size={20} 
-          color={Colors.primary} 
+          color={Colors.placeholderTextColorSecondary} 
           style={styles.inputIcon} 
         />
         
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.input,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: Colors.borderColor,
+    borderColor: Colors.textGray,
     marginBottom: 15,
   },
   inputError: {
