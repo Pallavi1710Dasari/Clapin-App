@@ -3,7 +3,6 @@ import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import EntryScreen from '../screens/EntryScreen';
 import SignInScreen from '../screens/SignInScreen/SignInScreen';
-import LoginScreen from '../screens/LoginScreen';
 import BottomTabNavigator from './BottomTabNavigator';
 import SignUpPageOne from '../screens/SignUpScreen/SignUpPageOne';
 import SignUpPageTwo from '../screens/SignUpScreen/SignUpPageTwo';
@@ -11,13 +10,25 @@ import ForgotPassword from '../screens/ForgotPassword';
 import ChangePasswordScreen from '../screens/ProfileScreen/ChangePasswordScreen';
 import EditProfileScreen from '../screens/ProfileScreen/EditProfileScreen';
 import AccountSettingsScreen from '../screens/ProfileScreen/AccountSettingsScreen';
+import ConfirmationScreen from '../screens/SignUpScreen/ConfirmationScreen';
 import { useAuth } from '../../context/AuthContext';
-import ConfirmationScreen from '../screens/SignUpScreen/ConfirmationModal';
+
+// Job-related screens
+import CreateJobStep1Screen from '../screens/JobsScreen/createJobsScreen/CreateJobStep1Screen';
+import CreateJobStep2Screen from '../screens/JobsScreen/createJobsScreen/CreateJobStep2Screen';
+import CreateJobStep3Screen from '../screens/JobsScreen/createJobsScreen/CreateJobStep3Screen';
+import JobDetailsScreen from '../screens/JobsScreen/JobDetailsScreen';
+import JobApplicationsScreen from '../screens/JobsScreen/JobApplicationsScreen';
+import ApplicationDetailsScreen from '../screens/JobsScreen/ApplicationDetailsScreen';
+import EditJobScreen from '../screens/JobsScreen/EditJobScreen';
+import ApplyConfirmationScreen from '../screens/JobsScreen/ApplyConfirmationScreen';
+import ReelDetailScreen from '../screens/FeedsScreen/ReelDetailScreen';
+import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
 
 const Stack = createStackNavigator();
 const AuthStack = createStackNavigator();
 const AppStack = createStackNavigator();
-const ProfileStack = createStackNavigator();
+const MainStack = createStackNavigator();
 
 const AuthStackScreen = () => (
   <AuthStack.Navigator screenOptions={{ headerShown: false }}>
@@ -26,33 +37,47 @@ const AuthStackScreen = () => (
     <AuthStack.Screen name="SignUpPageOne" component={SignUpPageOne} />
     <AuthStack.Screen name="SignUpPageTwo" component={SignUpPageTwo} />
     <AuthStack.Screen name="ConfirmationScreen" component={ConfirmationScreen} />
-    <AuthStack.Screen name="Login" component={LoginScreen} />
     <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
   </AuthStack.Navigator>
-
 );
 
-// Profile-related stack navigator
-const ProfileStackScreen = () => (
-  <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
-    <ProfileStack.Screen name="ProfileMain" component={BottomTabNavigator} />
-    <ProfileStack.Screen name="ChangePassword" component={ChangePasswordScreen} />
-    <ProfileStack.Screen name="EditProfile" component={EditProfileScreen} />
-    <ProfileStack.Screen name="AccountSettings" component={AccountSettingsScreen} />
-  </ProfileStack.Navigator>
+// Main Navigation Stack with Bottom Tab and all modal screens
+const MainStackScreen = () => (
+  <MainStack.Navigator screenOptions={{ headerShown: false }}>
+    {/* BottomTabNavigator as the main screen */}
+    <MainStack.Screen name="BottomTabs" component={BottomTabNavigator} />
+    
+    {/* Profile-related screens */}
+    <MainStack.Screen name="Profile" component={ProfileScreen} />
+    <MainStack.Screen name="ChangePassword" component={ChangePasswordScreen} />
+    <MainStack.Screen name="EditProfile" component={EditProfileScreen} />
+    <MainStack.Screen name="AccountSettings" component={AccountSettingsScreen} />
+    
+    {/* Job-related screens */}
+       {/* Multi-step job creation screens */}
+    <MainStack.Screen name="CreateJobStep1" component={CreateJobStep1Screen} />
+    <MainStack.Screen name="CreateJobStep2" component={CreateJobStep2Screen} />
+    <MainStack.Screen name="CreateJobStep3" component={CreateJobStep3Screen} />
+
+    <MainStack.Screen name="JobDetails" component={JobDetailsScreen} />
+    <MainStack.Screen name="JobApplications" component={JobApplicationsScreen} />
+    <MainStack.Screen name="ApplicationDetails" component={ApplicationDetailsScreen} />
+    <MainStack.Screen name="EditJob" component={EditJobScreen} />
+    <MainStack.Screen name="ApplyConfirmation" component={ApplyConfirmationScreen} />
+
+    <MainStack.Screen name="ReelDetail" component={ReelDetailScreen} />
+  </MainStack.Navigator>
 );
 
-// Separate stack for app screens
+// App Stack (logged-in state)
 const AppStackScreen = () => (
   <AppStack.Navigator screenOptions={{ headerShown: false }}>
-    {/* <AppStack.Screen name="Home" component={BottomTabNavigator} /> */}
-    <AppStack.Screen name="Main" component={ProfileStackScreen} />
+    <AppStack.Screen name="Main" component={MainStackScreen} />
   </AppStack.Navigator>
 );
 
 const AppNavigator = () => {
   const { isLoading, userToken } = useAuth();
-
 
   if (isLoading) {
     return (
@@ -64,13 +89,13 @@ const AppNavigator = () => {
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-    {userToken ? (
-      <Stack.Screen name="App" component={AppStackScreen} />
-    ) : (
-      <Stack.Screen name="Auth" component={AuthStackScreen} />
-    )}
-  </Stack.Navigator>
-    );
+      {userToken ? (
+        <Stack.Screen name="App" component={AppStackScreen} />
+      ) : (
+        <Stack.Screen name="Auth" component={AuthStackScreen} />
+      )}
+    </Stack.Navigator>
+  );
 };
 
 const styles = StyleSheet.create({
