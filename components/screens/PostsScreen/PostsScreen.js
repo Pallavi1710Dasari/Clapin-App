@@ -144,14 +144,14 @@ const PostsScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Header 
         title="Create Post" 
-        rightComponent={
-          <IconButton 
-            iconName="search1" 
-            size={24} 
-            color={Colors.iconsColor} 
-            onPress={() => Alert.alert('Search', 'Search posts')} 
-          />
-        }
+        // rightComponent={
+        //   <IconButton 
+        //     iconName="search1" 
+        //     size={24} 
+        //     color={Colors.iconsColor} 
+        //     onPress={() => Alert.alert('Search', 'Search posts')} 
+        //   />
+        // }
       />
       
       {/* Post Creation Card */}

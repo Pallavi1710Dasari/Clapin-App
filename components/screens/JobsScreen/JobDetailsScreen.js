@@ -17,7 +17,7 @@ import { Colors } from '../../../constants/constantStyles';
 import JobsService from '../../../services/JobsService';
 
 const JobDetailsScreen = ({ route }) => {
-  const { job, isOwnJob } = route.params;
+  const { job, isOwnJob, isApplied } = route.params;
   const navigation = useNavigation();
   const [isSaved, setIsSaved] = useState(false);
   
@@ -303,10 +303,20 @@ const JobDetailsScreen = ({ route }) => {
       {/* Bottom Action Button */}
       {!isOwnJob ? (
         <View style={styles.bottomActions}>
+        {isApplied ? (
+          // For jobs the user has already applied to
+          <View style={styles.appliedStatusContainer}>
+            <AntDesign name="checkcircle" size={20} color="#4CAF50" style={styles.appliedIcon} />
+            <Text style={styles.appliedText}>Applied</Text>
+            <Text style={styles.appliedDate}>{job.appliedDate || 'Recently'}</Text>
+          </View>
+        ) : (
+          // For jobs the user hasn't applied to yet
           <TouchableOpacity style={styles.applyButton} onPress={handleApply}>
             <Text style={styles.applyButtonText}>Apply Now</Text>
           </TouchableOpacity>
-        </View>
+        )}
+      </View>
       ) : (
         <View style={styles.bottomActions}>
           <TouchableOpacity 
@@ -501,6 +511,30 @@ const styles = {
     borderRadius: 8,
     padding: 12,
     alignItems: 'center',
+  },
+  appliedStatusContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(76, 175, 80, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(76, 175, 80, 0.3)',
+    borderRadius: 24,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+  },
+  appliedIcon: {
+    marginRight: 8,
+  },
+  appliedText: {
+    color: '#4CAF50',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginRight: 8,
+  },
+  appliedDate: {
+    color: '#999',
+    fontSize: 14,
   },
   applicantImage: {
     width: 50,

@@ -126,6 +126,16 @@ const FeedsScreen = () => {
     navigation.navigate('Profile');
   };
 
+  // Navigate to Notifications screen
+  const goToNotofications = () => {
+    navigation.navigate('Notifications');
+  };
+
+  // Navigate to Messages screen
+  const goToMessages = () => {
+    navigation.navigate('Messages');
+  };
+
   return (
     <View style={styles.container}>
       {/* Header with profile pic and icons */}
@@ -138,11 +148,11 @@ const FeedsScreen = () => {
         </TouchableOpacity>
         
         <View style={styles.headerIcons}>
-          <TouchableOpacity style={styles.headerIconButton}>
+          <TouchableOpacity style={styles.headerIconButton} onPress={goToNotofications}>
             <MaterialIcons name="notifications-none" size={26} color={Colors.iconsColor} />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.headerIconButton}>
+          <TouchableOpacity style={styles.headerIconButton} onPress={goToMessages}>
             <MaterialIcons name="chat" size={26} color={Colors.iconsColor} />
           </TouchableOpacity>
         </View>

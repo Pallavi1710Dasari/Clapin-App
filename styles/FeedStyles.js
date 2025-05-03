@@ -476,7 +476,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   postText: {
-    color: '#fff',
+    color: Colors.placeholderTextColorPrimary,
     fontSize: 16,
     lineHeight: 22,
     paddingHorizontal: 15,

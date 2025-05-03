@@ -22,8 +22,12 @@ import JobApplicationsScreen from '../screens/JobsScreen/JobApplicationsScreen';
 import ApplicationDetailsScreen from '../screens/JobsScreen/ApplicationDetailsScreen';
 import EditJobScreen from '../screens/JobsScreen/EditJobScreen';
 import ApplyConfirmationScreen from '../screens/JobsScreen/ApplyConfirmationScreen';
+import AppliedJobsScreen from '../screens/JobsScreen/AppliedJobsScreen';
+import CreatedJobsScreen from '../screens/JobsScreen/CreatedJobsScreen';
 import ReelDetailScreen from '../screens/FeedsScreen/ReelDetailScreen';
 import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
+import MessagesScreen from '../screens/Messages';
+import NotificationsScreen from '../screens/Notifications';
 
 const Stack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -46,6 +50,8 @@ const MainStackScreen = () => (
   <MainStack.Navigator screenOptions={{ headerShown: false }}>
     {/* BottomTabNavigator as the main screen */}
     <MainStack.Screen name="BottomTabs" component={BottomTabNavigator} />
+    <MainStack.Screen name="Messages" component={MessagesScreen} />
+    <MainStack.Screen name="Notifications" component={NotificationsScreen} />
     
     {/* Profile-related screens */}
     <MainStack.Screen name="Profile" component={ProfileScreen} />
@@ -58,6 +64,9 @@ const MainStackScreen = () => (
     <MainStack.Screen name="CreateJobStep1" component={CreateJobStep1Screen} />
     <MainStack.Screen name="CreateJobStep2" component={CreateJobStep2Screen} />
     <MainStack.Screen name="CreateJobStep3" component={CreateJobStep3Screen} />
+
+    <MainStack.Screen name="AppliedJobs" component={AppliedJobsScreen} />
+    <MainStack.Screen name="CreatedJobs" component={CreatedJobsScreen} />
 
     <MainStack.Screen name="JobDetails" component={JobDetailsScreen} />
     <MainStack.Screen name="JobApplications" component={JobApplicationsScreen} />
