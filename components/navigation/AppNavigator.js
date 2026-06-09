@@ -99,9 +99,9 @@ const AppNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       {userToken ? (
-        <Stack.Screen name="App" component={AppStackScreen} />
-      ) : (
         <Stack.Screen name="Auth" component={AuthStackScreen} />
+      ) : (
+        <Stack.Screen name="App" component={AppStackScreen}/>
       )}
     </Stack.Navigator>
   );
